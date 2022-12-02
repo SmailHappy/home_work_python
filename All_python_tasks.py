@@ -1,4 +1,3 @@
-import math
 import os
 from random import randint
 from random import random
@@ -162,7 +161,7 @@ def zadacha_5() :
     point_b_x = int(input("\nВведите координаты точки B по оси X: "))
     point_b_y = int(input("Введите координаты точки B по оси Y: "))
 
-    result = math.sqrt(((point_b_x - point_a_x)**2) + ((point_b_y - point_a_y)**2))
+    result = (((point_b_x - point_a_x)**2) + ((point_b_y - point_a_y)**2))**(1/2)
     result = int(result * 100) / 100
     print ('Расстояние между точками = ' + str(result))
 
