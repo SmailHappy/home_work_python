@@ -510,10 +510,7 @@ def zadacha_18() :
     numbers = input('Задайте последовательность чисел:\n').split()
     li = []
     for i in numbers :
-        if i in li :
-            continue
-        else :
-            li.append(i)
+        if not i in li : li.append(i)
 
     print (f"Список не повторяющихся элементов - {li}")
 

@@ -42,18 +42,24 @@ print(list_multipliers_number)
 
 
 
-# Задайте последовательность чисел. Напишите программу, 
-# которая выведет список неповторяющихся элементов исходной последовательности.
+# # Задайте последовательность чисел. Напишите программу, 
+# # которая выведет список неповторяющихся элементов исходной последовательности.
 
 numbers = input('Задайте последовательность чисел:\n').split()
 li = []
 for i in numbers :
-    if i in li :
-        continue
-    else :
-        li.append(i)
+    if not i in li : li.append(i)
 
 print (f"Список не повторяющихся элементов - {li}")
+
+# digits = [1, 2, 4, 5, 3, 2, 1, 1, 2, 4, 5, 7, 8]
+# dct = {}
+# for k in set(digits):
+#     dct.setdefault(k, digits.count(k))
+# print(f'Неповторяющиеся элементы:', end=' ')
+# for k, v in dct.items():
+#     if int(v) == 1:
+#         print(k, end=' ')
 
 
 
@@ -95,9 +101,8 @@ while degree_k >= 0 :
 
 result = result + ' = 0'
 
-poly_degree_k = open('home_work/4dz_polynomials_degree_k.txt', 'w')
-poly_degree_k.write(result)
-poly_degree_k.close()
+with open('home_work/dz_4/polynomials_degree_k.txt', 'w') as poly_degree_k :
+  poly_degree_k.write(result)
 
 
 
@@ -134,8 +139,8 @@ def find_index(text) :
         else : return count
     return count
 
-poly_1 = file_poly('home_work/4dz_poly_for_sum_1.txt')
-poly_2 = file_poly('home_work/4dz_poly_for_sum_2.txt')
+poly_1 = file_poly('home_work/dz_4/poly_for_sum_1.txt')
+poly_2 = file_poly('home_work/dz_4/poly_for_sum_2.txt')
 
 poly_1 = poly_1.replace('+', '').replace('=', '').split()[:-1]
 poly_2 = poly_2.replace('+', '').replace('=', '').split()[:-1]
@@ -195,7 +200,7 @@ while g >= 0 :
             del poly_2[0]
     g -= 1
 
-with open('home_work/4dz_sum_poly.txt', 'w') as sum_poly :
+with open('home_work/dz_4/sum_poly.txt', 'w') as sum_poly :
     temp = ''
     res = result[0]
     for i in result[1:] :

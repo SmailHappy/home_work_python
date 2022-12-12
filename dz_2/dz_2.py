@@ -60,14 +60,14 @@ number = int(input("Введите число N: "))
 list = [randint(-number, number) for i in range(number)]
 print(list)
 
-with open("home_work/file.txt", "w") as file :
+with open("home_work/dz_2/file.txt", "w") as file :
     count_numbers = randint(0, number)
     print (f"\nКол-во позиций в файле = {count_numbers}")
     while count_numbers > 0 :
         file.write(str(randint(1, number)) + "\n")
         count_numbers -= 1
 
-with open("home_work/file.txt", "r") as file :
+with open("home_work/dz_2/file.txt", "r") as file :
     result = 1
     for line in file :
         result *= list[int(line) - 1]
