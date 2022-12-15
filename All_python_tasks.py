@@ -2,6 +2,7 @@ import os
 from random import randint
 from random import random
 from math import ceil
+from math import factorial
 
 def Run() :
     print ("Домашнее задание 1. Задача 1 - 1. Задача 2 - 2. Задача 3 - 3. Задача 4 - 4. Задача 5 - 5.")
@@ -212,15 +213,17 @@ def zadacha_7() :
 
     print ("Задача 7. Принимает на вход число N и выдает набор произведений чисел от 1 до N\n")
     number = int(input("Введите число N: "))
-    num = 1
-    numb = 1
+    # num = 1
+    # numb = 1
 
-    while num < number :
-        numb *= num
-        print (numb, end = ", ")
-        num += 1
+    # while num < number :
+    #     numb *= num
+    #     print (numb, end = ", ")
+    #     num += 1
     
-    print (numb * number)
+    # print (numb * number)
+    numb = [factorial(i) for i in range(1, number + 1)]
+    print (numb)
 
     Break()
 
@@ -508,9 +511,10 @@ def zadacha_18() :
 
     print ("Задача 18. Выведит список неповторяющихся элементов исходной последовательности\n")
     numbers = input('Задайте последовательность чисел:\n').split()
-    li = []
-    for i in numbers :
-        if not i in li : li.append(i)
+    # li = []
+    # for i in numbers :
+    #     if not i in li : li.append(i)
+    li = [i for i in numbers if numbers.count(i) == 1]
 
     print (f"Список не повторяющихся элементов - {li}")
 

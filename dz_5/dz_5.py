@@ -22,86 +22,64 @@ print (result)
 # a) Добавьте игру против бота
 # b) Подумайте как наделить бота ""интеллектом""
 
-all_candy = 202
+all_candy = int(input('Введите количество конфет: '))
+max_candies_per_turn = int(input('Введите Максимальное количество конфет за ход - '))
+mode = int(input('\nВыберите с кем играть.\nИгрок --- 0\tБот --- 1\tИнтелектуальный бот --- 2\n'))
+
 candy_1_player = 0
 candy_2_player = 0
-candy_com = 0
-mode = int(input('Введите с кем играть. 0 - игрок, 1 - бот, 2 - интелектуальный бот\n'))
+
 move = randint(0, 1) # Определяем ход
-print(f'Всего конфет - {all_candy}')
+
 while all_candy > 0 :
-    if move == 1 :
-        # 1 игрок
-        if all_candy <= 28 :
-            print ('Побеждает игрок номер 1')
-            candy_1_player += all_candy
-            print(f'1 игроку потребовалось - {candy_1_player} конфет')
-            all_candy = 0
+    if all_candy <= max_candies_per_turn :
+        if move == 1 :
+            print(f'Побеждает игрок номер 1.\nИгроку номер 1 для победы потребовалось - {candy_1_player + all_candy} конфет')
         else :
-            print('Ходит 1 игрок.')
-            get_candy = int(input('Сколько конфет вы возьмете? ')) # берет конфеты
-            while get_candy > 28 :
-                print('Максимум 28 конфет за ход')
-                get_candy = int(input('Сколько конфет вы возьмете? '))
-            candy_1_player += get_candy
-            all_candy -= get_candy
-            print(f'\nВсего осталось - {all_candy}')
-            move = 0
+            if mode == 0 :
+                print(f'Побеждает игрок номер 2.\nИгроку номер 2 для победы потребовалось - {candy_2_player + all_candy} конфет')
+            elif mode == 1 :
+                print(f'Побеждает компьютер.\nКомпьютеру потребовалось - {candy_2_player + all_candy} конфет')
+            else :
+                print(f'Побеждает Интелект.\nИнтелекту потребовалось всего - {candy_2_player + all_candy} конфет')
+        all_candy = 0    
+
+    elif move == 1 : # 1 игрок
+        get_candy = int(input('\nХодит 1 игрок. Сколько конфет вы возьмете? ')) # берет конфеты
+        while get_candy > max_candies_per_turn :
+            get_candy = int(input(f'\nМаксимум {max_candies_per_turn} за ход!\nСколько конфет вы возьмете на этот раз? '))
+        candy_1_player += get_candy
+        all_candy -= get_candy
+        print(f'Всего осталось - {all_candy}')
+        move = 0
 
     else :
-        if mode == 0 :
-            # 2 игрок
-            if all_candy <= 28 :
-                print ('Побеждает игрок номер 2')
-                candy_2_player += all_candy
-                print(f'2 игроку потребовалось - {candy_2_player} конфет')
-                all_candy = 0
-            else :
-                print('Ходит 2 игрок.')
-                get_candy = int(input('Сколько конфет вы возьмете? ')) # берет конфеты
-                while get_candy > 28 :
-                    print('Максимум 28 конфет за ход')
-                    get_candy = int(input('Сколько конфет вы возьмете? '))
-                candy_2_player += get_candy
-                all_candy -= get_candy
-                print(f'\nВсего осталось - {all_candy}')
-                move = 1
+        if mode == 0 : # 2 игрок
+            get_candy = int(input('\nХодит 2 игрок. Сколько конфет вы возьмете? ')) # берет конфеты
+            while get_candy > max_candies_per_turn :
+                get_candy = int(input(f'\nМаксимум {max_candies_per_turn} за ход!\nСколько конфет вы возьмете на этот раз? '))
+            candy_2_player += get_candy
+            all_candy -= get_candy
+            print(f'Всего осталось - {all_candy}')
+            move = 1
 
-        elif mode == 1 :
-            # Bot
-            if all_candy <= 28 :
-                print ('Побеждает компьютер.')
-                candy_com += all_candy
-                print(f'Компьютеру потребовалось - {candy_com} конфет')
-                all_candy = 0
-            else :
-                print('Ходит компьютер.')
-                get_candy = randint(1, 28)
-                print(f'Компьютер берёт - {get_candy} конфет')
-                candy_com += get_candy
-                all_candy -= get_candy
-                print(f'\nВсего осталось - {all_candy}')
-                move = 1
+        elif mode == 1 : # Bot
+            get_candy = randint(1, max_candies_per_turn)
+            candy_2_player += get_candy
+            all_candy -= get_candy
+            print(f'\nХодит компьютер. Компьютер берёт - {get_candy}\nВсего осталось - {all_candy}')
+            move = 1
 
-        elif mode == 2 :
-            # Интелект
-            if all_candy <= 28 :
-                print ('Побеждает ИИ.')
-                candy_com += all_candy
-                print(f'ИИ потребовалось - {candy_com} конфет')
-                all_candy = 0
-            else :
-                print('Ходит ИИ.')
-                for k in range(29, all_candy, 29) :
-                    for i in range(1, 29) :
-                        if all_candy - i == k :
-                            get_candy = i
-                            break
-                print(f'ИИ берёт - {get_candy} конфет')
-                candy_com += get_candy
-                all_candy -= get_candy
-                print(f'\nВсего осталось - {all_candy}')
-                move = 1
+        else : # Интелект
+            for k in range(max_candies_per_turn + 1, all_candy, max_candies_per_turn + 1) :
+                for i in range(1, max_candies_per_turn + 1) :
+                    if all_candy - i == k :
+                        get_candy = i
+                        break
+            candy_2_player += get_candy
+            all_candy -= get_candy
+            print(f'\nХодит Интелект. Интелект берёт - {get_candy}\nВсего осталось - {all_candy}')
+            move = 1
                     
 
     
@@ -158,21 +136,23 @@ while g >= 0 :
 # Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
 
 text = input('Введите последовательность: ')
-text_for_comp = list()
 comp_text = ''
+count = 1
 
-for i in text :
-    if i in text_for_comp :
-        continue
+for i in range(len(text) - 1) : # не захватывает последний элемент если он другой
+    if text[i + 1] == text[i] :
+        count += 1
     else : 
-        text_for_comp.append(i)
-        comp_text += str(text.count(i)) + i
+        if not count == 1 : comp_text += str(count) + text[i]
+        else : comp_text += text[i]
+        count = 1
+    
 
 print (f'Сжатые данные - {comp_text}')
 
-rep_text = ''
+# rep_text = ''
 
-for j in range(0, len(comp_text) - 1, 2) :
-    rep_text += comp_text[j + 1] * int(comp_text[j])
+# for j in range(0, len(comp_text) - 1, 2) :
+#     rep_text += comp_text[j + 1] * int(comp_text[j])
 
-print(f'Восстановленые данные - {rep_text}')
+# print(f'Восстановленые данные - {rep_text}')

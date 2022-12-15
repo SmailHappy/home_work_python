@@ -46,9 +46,9 @@ print(list_multipliers_number)
 # # которая выведет список неповторяющихся элементов исходной последовательности.
 
 numbers = input('Задайте последовательность чисел:\n').split()
-li = []
-for i in numbers :
-    if not i in li : li.append(i)
+li = [i for i in numbers if numbers.count(i) == 1]
+# for i in numbers :
+#     if not i in li : li.append(i)
 
 print (f"Список не повторяющихся элементов - {li}")
 
@@ -88,9 +88,7 @@ list_coef = [randint(0, 100) for i in range(101)]
 
 result = str(list_coef[randint(0, 100)]) + 'x^' + str(degree_k)
 
-degree_k = degree_k - 1
-
-while degree_k >= 0 :
+while degree_k - 1 >= 0 :
     coef = randint(0, 1)
     if coef == 1 :
         if degree_k == 0 :
@@ -99,10 +97,10 @@ while degree_k >= 0 :
             result += ' + ' + str(list_coef[randint(0, 100)]) + 'x^' + str(degree_k)
     degree_k -= 1
 
-result = result + ' = 0'
+result += ' = 0'
 
 with open('home_work/dz_4/polynomials_degree_k.txt', 'w') as poly_degree_k :
-  poly_degree_k.write(result)
+    poly_degree_k.write(result)
 
 
 

@@ -1,13 +1,12 @@
 from random import randint
+from math import factorial
 
 # Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
 # Пример:
 # - 6782 -> 23
 # - 0,56 -> 11
 
-number = input("Введите число: ")
-number = number.replace("," , '')
-number = number.replace("." , '')
+number = input("Введите число: ").replace("," , '').replace("." , '')
 sum = 0
 
 for i in number :
@@ -22,15 +21,10 @@ print (sum)
 # - пусть N = 4, тогда [ 1, 2, 6, 24 ] (1, 1*2, 1*2*3, 1*2*3*4)
 
 number = int(input("Введите число N: "))
-num = 1
-numb = 1
 
-while num < number :
-    numb *= num
-    print (numb, end = ", ")
-    num += 1
+numb = [factorial(i) for i in range(1, number + 1)]
 
-print (numb * number)
+print (numb)
 
 
 
