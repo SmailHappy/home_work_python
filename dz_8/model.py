@@ -200,7 +200,8 @@ def export_json() :
                 data = line.replace('\n', '').split(',')
                 result = {"Индекс": data[0], "Имя": data[1], "Фамилия": data[2], "Должность": data[3], "Зарплата": data[4], "Номер телефона": data[5]}
                 json.dump(result, w_file, indent = 4)
-
+    print ('Успешный экспорт')
+    
 
 
 
