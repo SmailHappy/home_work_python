@@ -28,15 +28,15 @@ def add_worker() :
 
     with open('full_base.txt', 'a', encoding='utf-8') as database:
         id = str(index + 1)
-        last_name = input('\nВведите фамилию: ').strip()
+        last_name = input('\nВведите фамилию: ')
         if last_name == '' : last_name = '---'
-        first_name = input('Введите имя: ').strip()
+        first_name = input('Введите имя: ')
         if first_name == '' : first_name = '---'
-        position = input('Введите должность: ').strip()
+        position = input('Введите должность: ')
         if position == '' : position = '---'
-        salary = input('Введите зарплату сотрудника: ').strip()
+        salary = input('Введите зарплату сотрудника: ')
         if salary == '' : salary = '---'
-        phone_number = input('Введите номер телефона: ').strip()
+        phone_number = input('Введите номер телефона: ')
         if phone_number == '' : phone_number = '---'
         data = id + ',' + first_name + ',' + last_name + ',' + position + ',' + salary + ',' + phone_number 
         database.write(data + '\n')
