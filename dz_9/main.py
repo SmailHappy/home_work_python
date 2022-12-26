@@ -16,7 +16,8 @@ print (f"Сумма цифр на нечётных позициях = {sum(fill_
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackContext
 
-TOKEN = "5750452743:AAHfqxB4fgyFypUbZBgTYnag_tO3JVtAkno"
+with open('token_bot.txt', 'r') as file_bot :
+    TOKEN = file_bot.read()
 
 updater = Updater(token = TOKEN, use_context = True)
 dispatcher = updater.dispatcher
