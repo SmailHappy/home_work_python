@@ -62,13 +62,13 @@ def operation(update: Update, context: CallbackContext) :
     if user_choice_operator == '+\n\nsummation' : 
         result = number_one + number_two
         update.message.reply_text(f'Результат: {number_one} + {number_two} = {result}')
-    if user_choice_operator == '-\n\ndifference': 
+    if user_choice_operator == '-\n\ndifference' : 
         result = number_one - number_two
         update.message.reply_text(f'Результат: {number_one} - {number_two} = {result}')
-    if user_choice_operator == '*\n\nmultiplication': 
+    if user_choice_operator == '*\n\nmultiplication' : 
         result = number_one * number_two
         update.message.reply_text(f'Результат: {number_one} * {number_two} = {result}')
-    if user_choice_operator == '/\n\ndivision':
+    if user_choice_operator == '/\n\ndivision' :
         try: 
             result = number_one / number_two
             update.message.reply_text(f'Результат: {number_one} / {number_two} = {result}')
